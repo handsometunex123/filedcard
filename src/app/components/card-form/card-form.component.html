@@ -1,0 +1,90 @@
+<form class="form-container mt-2" [formGroup]="cardForm" (ngSubmit)="submitForm()" *ngIf="!formSubmit">
+    <div class="field-container">
+        <label for="cardnumber">Card Number</label>
+        <input id="cardnumber" placeholder="Card Number" minlength="16" (focus)="cardNoPressed()" type="text"
+            [imask]="{mask: '0000 0000 0000 0000'}" inputmode="numeric" formControlName="cardno" required>
+        <span *ngIf="_cardno.invalid && (_cardno.dirty || _cardno.touched)" class="text-danger">
+            <small *ngIf="_cardno.errors?.required">
+                Card number is required.
+            </small>
+            <small *ngIf="_cardno.errors?.minlength">
+                Card number length is invalid.
+            </small>
+        </span>
+        <svg id="ccicon" class="ccicon" width="750" height="471" viewBox="0 0 750 471" version="1.1"
+            xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
+        </svg>
+    </div>
+    <div class="field-container">
+        <label for="name">Name</label>
+        <input id="name" maxlength="20" type="text" (focus)="namePressed()" (blur)="checkExpiryDate()"
+            placeholder="Card Holder" formControlName="name" required>
+        <span *ngIf="_name.invalid && (_name.dirty || _name.touched)" class="text-danger">
+            <small *ngIf="_name.errors.required">
+                Name is required.
+            </small>
+            <small *ngIf="_name.errors.pattern">
+                Name can only be a text. e.g Ayodeji Saliu
+            </small>
+        </span>
+    </div>
+    <div class="field-container">
+        <label for="expirationdate">Expiration (mm/yy)</label>
+        <input id="expirationdate" type="text" [imask]="{mask: '00/00'}" (focus)="expireDatePressed()"
+            (blur)="checkExpiryDate()" placeholder="MM/YY" inputmode="numeric" formControlName="expiration" required>
+        <span *ngIf="_expiration.invalid && (_expiration.dirty || _expiration.touched)" class="text-danger">
+            <small *ngIf="_expiration.errors.required">
+                Expiration is required.
+            </small>
+            <small *ngIf="_expiration.errors.minlength">
+                Expiration is too short.
+            </small>
+            <small *ngIf="_expiration.errors.dateNotCorrect">
+                Please enter a correct future date
+            </small>
+
+        </span>
+    </div>
+    <div class="field-container">
+        <label for="securitycode">Security Code</label>
+        <input id="securitycode" type="text" placeholder="CVV" (focus)="cvvPressed()" [imask]="{mask: '000'}"
+            inputmode="numeric" formControlName="cvv">
+        <span *ngIf="_cvv.invalid && (_cvv.dirty || _cvv.touched)" class="text-danger">
+            <small *ngIf="_cvv.errors.minlength || _cvv.errors.maxlength">
+                cvv must the three numbers only
+            </small>
+        </span>
+    </div>
+    <div class="field-container">
+        <label for="amount">Amount</label>
+        <input currencyMask id="amount" type="text" placeholder="Amount" formControlName="amount" required
+            [options]="{align: 'left',thousands: ',', decimal: '.' ,  prefix: ''}">
+        <span *ngIf="_amount.invalid && (_amount.dirty || _amount.touched)" class="text-danger">
+            <small *ngIf="_amount.errors.required">
+                Amount is required.
+            </small>
+            <small *ngIf="_amount.errors.pattern">
+                Amount should be greater than 0.
+            </small>
+
+        </span>
+    </div>
+    <div class="field-container d-flex justify-content-center">        
+        <button class="btn btn-success" type="submit">
+            <ng-container *ngIf="isLoading; else btnText">
+                <span class="d-flex align-items-center">
+                    <div class="spinner-border text-light" role="status">
+                        <span class="sr-only">Loading...</span>
+                    </div>
+                    <span class="mx-2">Please wait....</span>
+                </span>
+            </ng-container>
+            <ng-template #btnText>Submit Card</ng-template>
+        </button>
+        <button class="btn btn-danger ml-2" (click)="resetForm()" type="button">Reset</button>
+
+    </div>
+
+</form>
+
+<!-- <app-quick-loader *ngIf="isLoading"></app-quick-loader> -->

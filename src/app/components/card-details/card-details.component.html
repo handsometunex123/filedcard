@@ -1,0 +1,23 @@
+<h3 style="text-align: center; margin-top: 20px;">Generated Card Details</h3>
+<div class="card-detail">    
+    <div class="card-item">
+        <h4 class="label">Card holder:</h4>
+        <h4>{{cardDetails.name | titlecase}}</h4>
+    </div>
+    <div class="card-item">
+        <h4 class="label">Card Number:</h4>
+        <h4>{{cardDetails.cardno}}</h4>
+    </div>
+    <div class="card-item">
+        <h4 class="label">Amount:</h4>
+        <h4>${{cardDetails.amount | number}}</h4>
+    </div>
+    <div class="card-item">
+        <h4 class="label">CVV:</h4>
+        <h4>{{cardDetails.cvv}}</h4>
+    </div>
+    <div class="card-item">
+        <h4 class="label">Expiration Date:</h4>
+        <h4>{{cardDetails.expiration}}</h4>
+    </div>
+</div>

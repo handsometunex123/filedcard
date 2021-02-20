@@ -1,0 +1,66 @@
+
+
+
+:host {
+    position: fixed;
+    top: 10px;
+    right: 4px;
+    width: 300px;
+    z-index: 8000;
+
+    .notification-wrapper {
+      min-height: 95px;
+      background-color: #fff;
+      overflow: hidden;
+      padding: 5px;
+      border-top-right-radius: 4px;
+      border-top-left-radius: 4px;
+      border-width: 4px !important;
+  
+      .header {
+          margin-bottom: 2px;
+        .close{
+            font-size: 25px;
+            cursor: pointer;
+            :hover {background: #bbb;}
+
+        }
+
+        .f-s-16 {
+            font-size: 16px;
+            font-weight: 400;
+        }
+        .f-s-13 {
+            font-size: 13px;
+            font-weight: 600;
+        }
+
+
+  
+      }
+  
+      &.success {
+        border-color: #6e8233 !important;
+      }
+  
+      &.info {
+        border-color: #598dc0 !important;
+      }
+  
+      &.error {
+        border-color: #e57373 !important;
+      }
+    }
+  }
+  
+  // @media only screen and (max-width: 480px) {
+  //   :host {
+  //     bottom: 50px;
+  //   }
+  // }
+  
+
+  
+  
+  
+  

@@ -1,0 +1,12 @@
+<div [@slideInOut] *ngIf="messaging.currentMessage$ |async as message"
+    [ngClass]="{'slideInRight': message, 'slideOutRight': !message}" [class]="message.type"
+    class="border-top animated notification-wrapper">
+    <div class="header d-flex justify-content-between align-items-center">
+        <span class="mb-3 f-s-13">{{message.title | titlecase}}</span>
+        <span class="close" (click)="messaging.clearMessage()">&times;</span>
+    </div>
+    <span class="f-s-13">{{message.body}}</span>
+    <!-- <div class="footer d-flex justify-content-start mt-2">
+        <small class="mat-caption small">{{message.category || 'Application Message'}}</small>
+    </div> -->
+</div>

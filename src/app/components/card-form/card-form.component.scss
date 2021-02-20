@@ -1,0 +1,19 @@
+
+.ng-valid[required], .ng-valid.required  {
+    border-left: 3px solid #42A948; /* green */
+  }
+  
+  .ng-invalid:not(form)  {
+    border-left: 3px solid #ff3d00; /* red */
+  }
+
+  .spinner-border{
+      font-size: 5px;
+      height: 15px;
+      width: 15px;
+  }
+
+
+
+
+

@@ -1,0 +1,9 @@
+<!-- <div class="head-text" *ngIf="!(cardData.formSubmitted$ | async)">
+    <a (click)="goBack()" class="previous">&#8249;</a>
+    <h2 class="mb-0 d-flex justify-self-center">Payment Information</h2>
+</div> -->
+<app-card-image></app-card-image>
+<app-card-form *ngIf="!(cardData.formSubmitted$ | async)"></app-card-form>
+<div class="" *ngIf="(cardData.formSubmitted$ | async) && (cardData.submittedCardData$ | async) | async as card">
+    <app-card-details [cardDetails]="card"></app-card-details>
+</div>
